@@ -139,6 +139,35 @@ fold2 = predict(weights2, part2_loader, 'Fold-2 Results')
 fold3 = predict(weights3, part3_loader, 'Fold-3 Results')
 fold4 = predict(weights4, part4_loader, 'Fold-4 Results')
 
+"""
+Generated Results looks like this
+
+*********************** Fold-1 Results *************************
+TP:  1720 FP:  1943 TN:  10511 FN:  614
+(0.5809181730499171, 0.47177415659692445)
+0    12454
+1     2334
+Name: target, dtype: int64
+*********************** Fold-2 Results *************************
+TP:  1155 FP:  3083 TN:  10772 FN:  457
+(0.49398229446599073, 0.28724094275141926)
+0    13855
+1     1612
+Name: target, dtype: int64
+*********************** Fold-3 Results *************************
+TP:  1585 FP:  2668 TN:  11640 FN:  779
+(0.4840046650744297, 0.3629519598840223)
+0    14308
+1     2364
+Name: target, dtype: int64
+*********************** Fold-4 Results *************************
+TP:  1706 FP:  2241 TN:  11791 FN:  984
+(0.47449435808963475, 0.39911957177843904)
+0    14032
+1     2690
+Name: target, dtype: int64
+"""
+
 #Saving predictions issued for each instances
 fold1.to_csv(r'trained_models/validation_preds/fold1_res.csv', index=False, header=True, columns=['timestamp', 'flare_prob', 'target'])
 fold2.to_csv(r'trained_models/validation_preds/fold2_res.csv', index=False, header=True, columns=['timestamp', 'flare_prob', 'target'])
