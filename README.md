@@ -13,7 +13,7 @@ This repo presents a post hoc analysis of a deep learning-based full-disk solar 
 #### 1. download_mag:
 This folder/package contains one python module, "download_jp2.py". There are two functions inside this module. First Function: "download_from_helioviewer()" downloads jp2 magnetograms from helioveiwer api : Helioviewer Second Function: "jp2_to_jpg_conversion()" converts jp2s to jpgs for faster computation. If resize=True, pass height and width to resize the magnetograms
 
-##### 2. data_labeling:
+#### 2. data_labeling:
 Run python labeling.py : Contains functions to generate labels, binarize, filtering files, and creating 4-fold CV dataset.
 Reads goes_integrated_flares.csv files from data_source.
 Generated labels are stored inside data_labels. 
