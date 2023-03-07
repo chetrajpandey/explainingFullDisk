@@ -19,9 +19,11 @@ class Custom_AlexNet(nn.Module):
                  ipt_size=(512, 512), 
                  pretrained=True, 
                  net_type='alexnet', 
-                 num_classes=2):
+                 num_classes=2, train=True):
         super(Custom_AlexNet, self).__init__()
         
+        #Mode Initialization
+        self.tr = train
         #add one convolution layer at the beginning
         self.first_conv_layer = nn.Sequential(
             nn.Conv2d(1, 3, kernel_size=3, stride=1, padding=1, dilation=1, groups=1, bias=True),
@@ -57,8 +59,10 @@ class Custom_AlexNet(nn.Module):
         x = self.avgpool(x) 
         x = x.view(x.size(0), -1)
         x = self.classifier(x)
-        return F.log_softmax(x)
-#         return x
+        if self.tr:
+            return F.log_softmax(x)
+        else:
+            return x
 
     def _init_classifier_weights(self):
         for m in self.first_conv_layer:
