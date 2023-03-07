@@ -7,6 +7,9 @@
 [![Docs - GitHub.io](https://img.shields.io/static/v1?logo=captum&style=flat&color=pink&label=lib&message=captum-0.5.0)](https://captum.ai/)
 
 This repo presents a post hoc analysis of a deep learning-based full-disk solar flare prediction model using three post hoc attention methods: (i) Guided Gradient-weighted Class Activation Mapping, (ii) Deep Shapley Additive Explanations, and (iii) Integrated Gradients.
+### Architecture of Our AlexNet CNN Pipeline based Full-disk Model
+
+![alt text](https://github.com/chetrajpandey/fulldiskAttention/blob/main/readme_resoc/model.pdf?raw=true)
 
 ### Source Code Documentation
 
