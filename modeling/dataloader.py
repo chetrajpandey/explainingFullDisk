@@ -79,28 +79,3 @@ class FLDataset(Dataset):
 
     def __len__(self):
         return len(self.annotations)
-    
-
-    
-class Balancer(Dataset):
-    def __init__(self, csv_file, root_dir, len, transform=None):
-        iter_csv = pd.read_csv(csv_file, iterator=True)
-        df = pd.concat([chunk[chunk['goes_class'] == 1] for chunk in iter_csv])
-        self.annotations = df
-        self.root_dir = root_dir
-        self.transform = transform
-        self.len = len
-
-    def __getitem__(self, index):
-        img_path = os.path.join(self.root_dir, self.annotations.iloc[index, 0])
-        hmi = Image.open(img_path)
-        y_label = torch.tensor(int(self.annotations.iloc[index, 1]))
-        #print(y_label)
-
-        if self.transform:
-            image = self.transform(hmi)
-            
-        return (image, y_label)
-
-    def __len__(self):
-        return self.len
