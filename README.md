@@ -1,4 +1,4 @@
-## Interpretable Deep Learning-based Solar Flare Prediction with post hoc Attention for Operational Forecasting
+## Explainable Deep Learning-based Solar Flare Prediction with post hoc Attention for Operational Forecasting
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE) 
 [![python](https://img.shields.io/badge/Python-3.7.11-3776AB.svg?style=flat&logo=python&logoColor=white)](https://www.python.org)
