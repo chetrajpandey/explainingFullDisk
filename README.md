@@ -23,3 +23,31 @@ Generated labels are stored inside data_labels.
 labeling.py generates labels with multiple columns that we can use for post result analysis. Information about flares locations, and any other flares that occured with in the period of 24 hours.
 For simplification:  folder inside data_labels, named simplified_data_labels that contains two columns: the name of the file and actual target that is sufficient to train the model.
 
+#### 3. modeling:
+
+(a) model.py: This module contains the architecture of our model which can integrate the initial added convolutional layers to the pretrained AlexNet. Passing train=True utilizes the logsoftmax on the final activation. To get the probabilities during model predictions, pass train=False, and apply softmax to obtain the probabilities.<br /> 
+(b) dataloader.py: This contains custom-defined data loaders for loading FL and NF class for selected augmentations.<br /> 
+(c) evaluation.py: This includes functions to convert tensors to sklearn compatible array to compute confusion matrix. Furthermore TSS and HSS skill scores definition.<br /> 
+(d) train.py: This module is the main module to train the model. Uses argument parsers for parameters change. This has seven paramters to change the model configuration:<br /> 
+(i) --fold: choose from 1 to 4, to run the corresponding fold in 4CV-cross validation; default=1<br /> 
+(ii) --epochs: number of epochs; default=40<br /> 
+(iii) --batch_size: default=64<br /> 
+(iv) --lr: initial learning rate selection; default=0.0099<br /> 
+(v) --weight_decay: regularization parameter used by the loss function; default=0.01<br /> 
+(vi) --patience: lr scheduler parameter used to reduce learning rate at specified value which indicates the fold tolerance; default=4<br /> 
+(vii) --factor: lr scheduler parameter determining the quantitiy by which the learning rate is to be reduced; default=0.03<br /> 
+
+For Example: <br /> 
+To run the first fold for 50 epochs:<br /> 
+python train.py --fold=1 --epochs=50 <br /> 
+To run the second fold for 10 epochs:<br /> 
+python train.py --fold=2 --epochs=10 <br/>
+
+(e) predict_each_instance.py: This python module can be used to issue predictions for each instances using models trained in corresponding folds with their validation sets. Make sure to have train=False while loading the model to get probability scores.
+
+#### 4. post_hoc:
+
+This folder contains 1 jupyter notebook for Location Analysis indicating correctly/incorrectly made predictions in central and near-limb locations. <br /> 
+Also for two hand-picked instances (one for True Positive, and one for False Positive), we show the generated post hoc attentions.
+
+
